@@ -1,0 +1,53 @@
+<div class="min-h-screen flex items-center justify-center bg-gray-100">
+  <div class="w-full max-w-sm bg-white p-8 rounded-xl shadow-lg relative">
+    <!-- Logo -->
+    <div class="flex justify-center mb-6">
+      <img src="assets/logo.png" alt="Logo" class="w-20 h-20 object-contain">
+    </div>
+
+    <h2 class="text-2xl font-bold text-center mb-6">Iniciar sesión</h2>
+
+    <form id="login-form" class="flex flex-col gap-4">
+      <!-- Usuario -->
+      <div class="relative">
+        <input type="text" id="username" placeholder="Usuario" class="w-full p-3 pl-10 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <!-- Icono usuario -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1118.88 6.196M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+      </div>
+
+      <!-- Contraseña -->
+      <div class="relative">
+        <input type="password" id="password" placeholder="Contraseña" class="w-full p-3 pl-10 pr-10 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+        <!-- Icono candado -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c1.104 0 2-.896 2-2V7a4 4 0 10-8 0v2c0 1.104.896 2 2 2h4z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 11h14v10H5V11z" />
+        </svg>
+        <!-- Icono ojo mostrar/ocultar -->
+        <button type="button" id="toggle-password" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+        </button>
+      </div>
+
+      <button type="submit" class="bg-blue-500 text-white p-3 rounded hover:bg-blue-600 transition">Entrar</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const passwordInput = document.getElementById('password');
+  const toggleBtn = document.getElementById('toggle-password');
+
+  toggleBtn.addEventListener('click', () => {
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+    } else {
+      passwordInput.type = 'password';
+    }
+  });
+</script>
