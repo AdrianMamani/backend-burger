@@ -1,11 +1,28 @@
-const express = require('express');
-const router = express.Router();
-const controlador = require('../controllers/producto.controller');
+// routes/productos.routes.js
+const express = require("express");
+const multer = require("multer");
+const path = require("path");
+const productosController = require("../controllers/producto.controller");
 
-router.get('/', controlador.obtenerProductos);
-router.get('/:id', controlador.obtenerProductoPorId);
-router.post('/', controlador.crearProducto);
-router.put('/:id', controlador.actualizarProducto);
-router.delete('/:id', controlador.eliminarProducto);
+const router = express.Router();
+
+// 📂 Configuración de multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, path.join(__dirname, "../public/productos"));
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + path.extname(file.originalname));
+    },
+});
+const upload = multer({ storage });
+
+// 📌 Rutas para productos
+router.get("/", productosController.obtenerProductos);
+router.get("/:id", productosController.obtenerProductoPorId);
+
+router.post("/", upload.single("imagen_pro"), productosController.crearProducto);
+router.put("/:id", upload.single("imagen_pro"), productosController.actualizarProducto);
+router.delete("/:id", productosController.eliminarProducto);
 
 module.exports = router;

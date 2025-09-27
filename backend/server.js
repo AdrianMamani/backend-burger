@@ -8,11 +8,18 @@ const unidadesRoutes = require('./routes/unidades.routes');
 const marcasRoutes = require('./routes/marcas.routes');
 const categoriasRoutes = require('./routes/categorias.routes');
 const usuarioRoutes = require('./routes/login.routes');
+const departamentRoutes = require('./routes/departament.routes')
+const provinciaRoutes = require('./routes/provincia.routes')
+const distritoRoutes = require('./routes/distrito.routes')
+const clienteRoutes = require('./routes/cliente.routes')
+const reclamosRoutes = require('./routes/reclamos.routes')
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+// 📌 Servir archivos estáticos (imágenes, etc.)
+app.use("/public", express.static(path.join(__dirname, "public")));
 
 // Servir archivos estáticos del frontend
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -23,6 +30,11 @@ app.use('/api/unidades', unidadesRoutes);
 app.use('/api/marcas', marcasRoutes);
 app.use('/api/categorias', categoriasRoutes);
 app.use('/api/usuario', usuarioRoutes);
+app.use('/api/departamento', departamentRoutes);
+app.use('/api/provincia', provinciaRoutes);
+app.use('/api/distrito', distritoRoutes);
+app.use('/api/clientes', clienteRoutes);
+app.use('/api/reclamos', reclamosRoutes);
 
 // Servir frontend solo para rutas que NO empiecen con /api
 app.use((req, res, next) => {

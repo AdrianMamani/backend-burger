@@ -1,0 +1,5 @@
+# Dependencias de Node
+/backend/node_modules
+
+# Archivos de logs o de entorno específicos
+# Puedes añadir más si es necesario
